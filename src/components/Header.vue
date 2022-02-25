@@ -15,5 +15,6 @@ header {
   background: blue;
   color: gold;
   border: 5px solid green;
+  margin: 10px;
 }
 </style>

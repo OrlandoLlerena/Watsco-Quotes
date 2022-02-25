@@ -1,7 +1,8 @@
 <template lang="pug">
   #app
     Header
-    <div>
+    <div class="box">
+    h3 Quote of the Day
     a(
       v-if="quote.link"
       :href="quote.link"
@@ -9,6 +10,7 @@
 
     span(v-else) {{ quote.body }}
     <!--<PwaNotification />-->
+    
     </div>
     QuoteList
 </template>
@@ -46,5 +48,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   border: 3px solid red;
+}
+
+.box {
+  border: 3px solid blue;
+  margin: 8px;
 }
 </style>
