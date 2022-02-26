@@ -1,5 +1,11 @@
 <template>
-  <button :style="{ background: color }" class="btn">{{ text }}</button>
+  <button
+    @click="$emit('saveQuote')"
+    :style="{ background: color }"
+    class="btn"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <script>

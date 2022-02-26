@@ -1,8 +1,11 @@
 <template lang="pug">
   #app
+
     Header
+
     <div class="box">
     h3 Quote of the Day
+
     a(
       v-if="quote.link"
       :href="quote.link"
@@ -10,10 +13,12 @@
 
     span(v-else) {{ quote.body }}
     
-    <!--<PwaNotification />-->
-    <Button text="Save Quote" color='goldenrod' />
+    //- <!--<PwaNotification />-->
+    <Button @saveQuote="addQuote" text="Save Quote" color='goldenrod' />
     </div>
+
     QuoteList
+
 </template>
 
 <script>
@@ -36,6 +41,11 @@ export default {
     QuoteList,
     Button,
   },
+  methods: {
+    addQuote() {
+      console.log(this.quote.body);
+    },
+  },
   mounted() {
     this.quote = getRandomQuote();
   },
@@ -56,6 +66,10 @@ export default {
 .box {
   border: 3px solid blue;
   margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -70,5 +84,6 @@ export default {
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+  max-width: 200px;
 }
 </style>
