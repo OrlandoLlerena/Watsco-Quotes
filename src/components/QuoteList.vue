@@ -1,18 +1,16 @@
 <template>
   <header>
     <h2>My Favorite Quotes:</h2>
-    <div :key="quote.id" :v-for="quote in quotes">
-      <h3>{{ quote.body }}</h3>
-    </div>
+    <li>
+      <!-- {{ todo.text }} -->
+      <button @click="$emit('remove', todo.id)">X</button>
+    </li>
   </header>
 </template>
 
 <script>
 export default {
   name: "QuoteList",
-  props: {
-    quotes: Array,
-  },
 };
 </script>
 
