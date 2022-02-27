@@ -22,7 +22,7 @@
       <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeTodo" />
     </ul>
     </div>
-    <h3 v-else>Some slick text about adding your favorite quote by saving it! </h3>
+    <h3 v-else>Your Inspirational wisdom needs more wisdom.</h3>
 </template>
 
 <script>
@@ -52,12 +52,13 @@ export default {
         alert("You already have this wisdom! Find another.");
       } else {
         this.savedQuotes.push(this.quote.body);
-        localStorage.setItem("savedQuotes", this.savedQuotes);
+        localStorage.setItem("savedQuotes", JSON.stringify(this.savedQuotes));
       }
     },
   },
   mounted() {
     this.quote = getRandomQuote();
+    this.savedQuotes = JSON.parse(localStorage.getItem("savedQuotes"));
   },
 };
 </script>
