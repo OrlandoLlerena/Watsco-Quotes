@@ -13,5 +13,6 @@ export default {
 <style scoped>
 header {
   color: black;
+  margin-top: 60px;
 }
 </style>

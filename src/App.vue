@@ -1,16 +1,21 @@
 <template lang="pug">
   #app
-
+    
     Header
 
+    <v-card class="quoteContainer" elevation="12">
     <div class="box">
-    h3 Quote of the Day
+    
+    h3 Quote of the Day:
 
     p {{ quote.body }}
     
     //- <!--<PwaNotification />-->
-    <Button @saveQuote="addQuote" text="Save Quote" color='goldenrod' />
+    
+    <Button @saveQuote="addQuote" text="Save Quote" color='#679436' />
+    
     </div>
+    </v-card>
 
     <div v-if="savedQuotes.length">
     <h2>My Favorite Quotes:</h2>
@@ -19,7 +24,9 @@
     
     </div>
 
-    <h3 v-else>Your Inspirational wisdom needs more wisdom.</h3>
+    <h2 v-else>Your Inspirational wisdom needs a quote.</h2>
+
+
 </template>
 
 <script>
@@ -70,17 +77,21 @@ export default {
 </script>
 
 <style>
-body {
-  background: lightgray;
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  height: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./assets/shunya-koide-1emWndlDHs0-unsplash.jpg) no-repeat center center
+      fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 .box {
@@ -88,11 +99,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* min-width: 304px; */
 }
 
 .btn {
   display: inline-block;
+  align-self: center;
   background: black;
   color: white;
   border: none;
@@ -104,5 +116,25 @@ body {
   font-size: 15px;
   font-family: inherit;
   max-width: 200px;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  padding-left: 20px;
+  color: white;
+}
+h3 {
+  padding-left: 10px;
+}
+
+p {
+  margin: 10px;
+}
+
+.quoteContainer {
+  margin: 18px 8px;
 }
 </style>
