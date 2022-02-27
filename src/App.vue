@@ -16,9 +16,13 @@
     //- <!--<PwaNotification />-->
     <Button @saveQuote="addQuote" text="Save Quote" color='goldenrod' />
     </div>
-
-    QuoteList
-
+    <div v-if="savedQuotes.length">
+    <h2>My Favorite Quotes:</h2>
+    <ul>
+      <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeTodo" />
+    </ul>
+    </div>
+    <h3 v-else>Some slick text about adding your favorite quote by saving it! </h3>
 </template>
 
 <script>
@@ -33,6 +37,7 @@ export default {
   data() {
     return {
       quote: null,
+      savedQuotes: [],
     };
   },
   components: {
@@ -43,7 +48,12 @@ export default {
   },
   methods: {
     addQuote() {
-      console.log(this.quote.body);
+      if (this.savedQuotes.includes(this.quote.body)) {
+        alert("You already have this wisdom! Find another.");
+      } else {
+        this.savedQuotes.push(this.quote.body);
+        localStorage.setItem("savedQuotes", this.savedQuotes);
+      }
     },
   },
   mounted() {
@@ -53,6 +63,10 @@ export default {
 </script>
 
 <style>
+body {
+  background: lightgray;
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -60,11 +74,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  border: 3px solid red;
 }
 
 .box {
-  border: 3px solid blue;
   margin: 8px;
   display: flex;
   flex-direction: column;

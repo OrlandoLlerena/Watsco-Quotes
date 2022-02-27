@@ -1,24 +1,27 @@
 <template>
-  <header>
-    <h2>My Favorite Quotes:</h2>
-    <li>
-      <!-- {{ todo.text }} -->
-      <button @click="$emit('remove', todo.id)">X</button>
-    </li>
-  </header>
+  <li>
+    {{ savedQuote }}
+    <!-- <i class="fas fa-time"></i> -->
+    <button @click="$emit('remove', todo.id)">X</button>
+  </li>
 </template>
 
 <script>
 export default {
   name: "QuoteList",
+  props: {
+    savedQuote: {
+      type: String,
+    },
+  },
 };
 </script>
 
 <style scoped>
-header {
-  background: gray;
-  color: white;
-  border: 5px solid green;
+li {
+  background: white;
+  color: black;
+  padding: 5px;
   margin: 10px;
 }
 </style>
