@@ -1,9 +1,9 @@
 <template>
-  <li>
+  <div>
     {{ savedQuote }}
     <!-- <i class="fas fa-time"></i> -->
     <button @click="$emit('remove', savedQuote)">X</button>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-li {
+div {
   background: white;
   color: black;
   padding: 5px;

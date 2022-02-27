@@ -6,22 +6,19 @@
     <div class="box">
     h3 Quote of the Day
 
-    a(
-      v-if="quote.link"
-      :href="quote.link"
-    ) {{ quote.body }}
-
-    span(v-else) {{ quote.body }}
+    p {{ quote.body }}
     
     //- <!--<PwaNotification />-->
     <Button @saveQuote="addQuote" text="Save Quote" color='goldenrod' />
     </div>
+
     <div v-if="savedQuotes.length">
     <h2>My Favorite Quotes:</h2>
-    <ul>
+    
       <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeSavedQuote" />
-    </ul>
+    
     </div>
+
     <h3 v-else>Your Inspirational wisdom needs more wisdom.</h3>
 </template>
 
@@ -36,7 +33,9 @@ export default {
   name: "app",
   data() {
     return {
-      quote: null,
+      quote: {
+        body: null,
+      },
       savedQuotes: [],
     };
   },
@@ -47,7 +46,6 @@ export default {
     Button,
   },
 
-  // const result = words.filter(word => word.length > 6);
   methods: {
     addQuote() {
       if (this.savedQuotes.includes(this.quote.body)) {
@@ -58,11 +56,9 @@ export default {
       }
     },
     removeSavedQuote(selectedQuote) {
-      console.log(selectedQuote);
       this.savedQuotes = this.savedQuotes.filter(
         (quote) => quote !== selectedQuote
       );
-      console.log(this.savedQuotes);
       localStorage.setItem("savedQuotes", JSON.stringify(this.savedQuotes));
     },
   },
