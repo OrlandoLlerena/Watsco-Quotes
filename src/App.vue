@@ -19,7 +19,7 @@
     <div v-if="savedQuotes.length">
     <h2>My Favorite Quotes:</h2>
     <ul>
-      <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeTodo" />
+      <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeSavedQuote" />
     </ul>
     </div>
     <h3 v-else>Your Inspirational wisdom needs more wisdom.</h3>
@@ -46,6 +46,8 @@ export default {
     QuoteList,
     Button,
   },
+
+  // const result = words.filter(word => word.length > 6);
   methods: {
     addQuote() {
       if (this.savedQuotes.includes(this.quote.body)) {
@@ -54,6 +56,14 @@ export default {
         this.savedQuotes.push(this.quote.body);
         localStorage.setItem("savedQuotes", JSON.stringify(this.savedQuotes));
       }
+    },
+    removeSavedQuote(selectedQuote) {
+      console.log(selectedQuote);
+      this.savedQuotes = this.savedQuotes.filter(
+        (quote) => quote !== selectedQuote
+      );
+      console.log(this.savedQuotes);
+      localStorage.setItem("savedQuotes", JSON.stringify(this.savedQuotes));
     },
   },
   mounted() {

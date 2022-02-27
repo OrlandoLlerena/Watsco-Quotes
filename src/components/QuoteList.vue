@@ -2,7 +2,7 @@
   <li>
     {{ savedQuote }}
     <!-- <i class="fas fa-time"></i> -->
-    <button @click="$emit('remove', todo.id)">X</button>
+    <button @click="$emit('remove', savedQuote)">X</button>
   </li>
 </template>
 
