@@ -67,7 +67,7 @@ export default {
   },
   mounted() {
     this.quote = getRandomQuote();
-    this.savedQuotes = JSON.parse(localStorage.getItem("savedQuotes"));
+    this.savedQuotes = JSON.parse(localStorage.getItem("savedQuotes")) || [];
   },
 };
 </script>
