@@ -1,32 +1,28 @@
 <template lang="pug">
-  #app
-    
-    Header
+#app
+  Header
 
-    <v-card class="quoteContainer" elevation="12">
-    <div class="box">
-    
-    h3 Quote of the Day:
+  <v-card class="quoteContainer" elevation="12">
+  <div class="box">
 
-    p {{ quote.body }}
-    
-    //- <!--<PwaNotification />-->
-    
-    <Button @saveQuote="addQuote" text="Save Quote" color='#679436' />
-    
-    </div>
-    </v-card>
+  h3 Quote of the Day:
 
-    <div v-if="savedQuotes.length">
-    <h2>My Favorite Quotes:</h2>
-    
-      <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeSavedQuote" />
-    
-    </div>
+  p {{ quote.body }}
 
-    <h2 v-else>Your Inspirational wisdom needs a quote.</h2>
+  //- <!--<PwaNotification />-->
 
+  <Button @saveQuote="addQuote" text="Save Quote" color='#679436' />
 
+  </div>
+  </v-card>
+
+  <div v-if="savedQuotes.length">
+  h2 My Favorite Quotes:
+    <QuoteList v-for="(savedQuote, index) in savedQuotes" :key="index" :savedQuote="savedQuote" @remove="removeSavedQuote" />
+
+  </div>
+
+  h2 v-else Your Inspirational wisdom needs a quote.
 </template>
 
 <script>
@@ -99,7 +95,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* min-width: 304px; */
 }
 
 .btn {
