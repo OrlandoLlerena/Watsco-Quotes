@@ -22,7 +22,7 @@
 
   </div>
 
-  h2 v-else Your Inspirational wisdom needs a quote.
+  <h2 v-else>Your Inspirational wisdom needs a quote.</h2>
 </template>
 
 <script>
